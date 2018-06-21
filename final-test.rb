@@ -12,7 +12,11 @@ def create_file_average
   puts '--------------------------------------------------------'
   average = 0
   data.each do |e|
-    average = (e[1].to_f + e[2].to_f + e[3].to_f + e[4].to_f + e[5].to_f) / 5
+    sum = 0
+    e.each do |j|
+      sum += j.to_f
+    end
+    average = sum/(e.length-1)
     puts "#{e[0]} tiene un promedio de #{average}"
     file = File.new("#{e[0]}.txt", 'w')
     file.puts average
@@ -38,7 +42,11 @@ def final_list_students
   puts '--------------------------------------------------------'
   puts 'Lista de alumnos aprobados:'
   data.select do |e|
-    average = (e[1].to_f + e[2].to_f + e[3].to_f + e[4].to_f + e[5].to_f) / 5
+    sum = 0
+    e.each do |j|
+      sum += j.to_f
+    end
+    average = sum/(e.length-1)
     puts "#{e[0]}: #{average}" if average > limit
   end
   puts '--------------------------------------------------------'
